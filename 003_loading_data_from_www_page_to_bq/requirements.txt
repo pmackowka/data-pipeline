@@ -1,0 +1,8 @@
+functions-framework==3.* # Cloud Functions
+google-cloud-bigquery # Cloud Functions
+google-cloud-storage # Cloud Functions
+
+Flask # local
+Jinja2  # local
+
+# pip install -r requirements.txt

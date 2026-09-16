@@ -1,0 +1,5 @@
+faker==18.9.0
+google-cloud-storage==2.10.0
+google-auth==2.22.0
+
+# pip install -r requirements.txt 
