@@ -1,7 +1,10 @@
 # Astro Runtime includes the following pre-installed providers packages: https://www.astronomer.io/docs/astro/runtime-image-architecture#provider-packages
 
-astronomer-cosmos[dbt-bigquery]==1.0.3 # install google + cosmos + dbt
-protobuf==3.20.0
+# Bez extra [dbt-bigquery]: dbt mieszka w osobnym dbt_venv (Dockerfile), Cosmos woła go przez ExecutionConfig.
+astronomer-cosmos==1.15.1
+# Podłoga bezpieczeństwa (CVE-2022-1941, CVE-2025-4565, CVE-2026-0994). Obraz 12.12.0 ma już tę wersję -
+# pin pilnuje, żeby żadna zależność jej nie obniżyła, i mówi Dependabotowi, co faktycznie jest zainstalowane.
+protobuf==5.29.6
 
 
 # apache-airflow-providers-google==10.14.0

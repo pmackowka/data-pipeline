@@ -1,7 +1,13 @@
 from airflow.decorators import dag, task
 from datetime import datetime
 
-from include.dbt.cosmos_config import DBT_PROJECT_CONFIG, DBT_CONFIG
+from include.dbt.cosmos_config import (
+    DBT_PROJECT_CONFIG,
+    DBT_CONFIG,
+    DBT_EXECUTION_CONFIG,
+    DBT_EXECUTABLE_PATH,
+    DBT_INVOCATION_MODE,
+)
 # Cosmos wires dbt models into the Airflow task graph as a native task group
 from cosmos.airflow.task_group import DbtTaskGroup
 from cosmos.constants import LoadMode
@@ -66,9 +72,13 @@ def retail():
         group_id='transform',
         project_config=DBT_PROJECT_CONFIG,
         profile_config=DBT_CONFIG,
+        execution_config=DBT_EXECUTION_CONFIG,
         render_config=RenderConfig(
             load_method=LoadMode.DBT_LS,
-            select=['path:models/transform']
+            select=['path:models/transform'],
+            # dbt ls przy parsowaniu DAG-a to osobna ścieżka niż wykonanie tasków - też musi trafić do dbt_venv
+            dbt_executable_path=DBT_EXECUTABLE_PATH,
+            invocation_mode=DBT_INVOCATION_MODE,
         )
     )
 
@@ -81,9 +91,13 @@ def retail():
         group_id='report',
         project_config=DBT_PROJECT_CONFIG,
         profile_config=DBT_CONFIG,
+        execution_config=DBT_EXECUTION_CONFIG,
         render_config=RenderConfig(
             load_method=LoadMode.DBT_LS,
-            select=['path:models/report']
+            select=['path:models/report'],
+            # dbt ls przy parsowaniu DAG-a to osobna ścieżka niż wykonanie tasków - też musi trafić do dbt_venv
+            dbt_executable_path=DBT_EXECUTABLE_PATH,
+            invocation_mode=DBT_INVOCATION_MODE,
         )
     )
 
