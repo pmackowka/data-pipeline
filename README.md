@@ -1,4 +1,4 @@
-# Data Pipeline
+# data-pipeline
 
 A collection of standalone data pipelines built while learning the modern data stack — GCP, Airflow, dbt, and the API/event-driven patterns that connect them. Each project is self-contained: its own README, its own dependencies, runnable on its own.
 
