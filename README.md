@@ -1,5 +1,7 @@
 # data-pipeline
 
+[![License: MIT](https://img.shields.io/github/license/pmackowka/data-pipeline)](LICENSE)
+
 A collection of standalone data pipelines built while learning the modern data stack — GCP, Airflow, dbt, and the API/event-driven patterns that connect them. Each project is self-contained: its own README, its own dependencies, runnable on its own.
 
 This isn't one framework wearing seven hats — it's seven different answers to "how do I get data from A to B," picked to cover the patterns that come up most in practice: event-driven triggers, orchestrated ETL, managed no-code transforms, incremental CDC, and a full orchestration + transformation + data-quality stack.
