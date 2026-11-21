@@ -10,13 +10,13 @@ This isn't one framework wearing seven hats — it's seven different answers to 
 
 | # | Project | Pattern | Stack |
 |---|---|---|---|
-| 001 | [Cricbuzz Rankings → BigQuery](001_api_cricbuzz_data_pipeline) | REST API → GCS, event-triggered Dataflow load | Airflow/Composer, Cloud Functions, Dataflow, BigQuery |
-| 002 | [Employee Data → Data Fusion → BigQuery](002_etl_data_fusion_airflow_bq) | Airflow-orchestrated ETL into a managed no-code transform | Airflow, Cloud Data Fusion, BigQuery |
-| 003 | [Browser Upload → GCS → BigQuery](003_loading_data_from_www_page_to_bq) | Manual upload for non-technical users, event-triggered load | Flask, Cloud Functions, BigQuery |
-| 004 | [Retail Analytics: Airflow + dbt + Soda](004_airflow_dbt_retail_project) | Full orchestration + transformation + data-quality gate | Airflow (Cosmos), dbt, Soda, BigQuery |
-| 005 | [X (Twitter) Data Pipeline](005_x_data_pipeline_using_airflow) | Scheduled API extract via self-hosted Airflow | tweepy, Airflow, Docker Compose |
-| 006 | [Spotify Listening History](006_spotify_data_pipeline) | Incremental ELT, built up in four iterations | Spotify API, pandas, SQLite |
-| 007 | [File-Based CDC via BigQuery External Tables](007_bigquery_transfer_service_optimise_file_based_cdc) | Query GCS files immediately, before a scheduled load | PyArrow, BigQuery external tables |
+| 001 | [Cricbuzz Rankings → BigQuery](001-api-cricbuzz-data-pipeline) | REST API → GCS, event-triggered Dataflow load | Airflow/Composer, Cloud Functions, Dataflow, BigQuery |
+| 002 | [Employee Data → Data Fusion → BigQuery](002-etl-data-fusion-airflow-bq) | Airflow-orchestrated ETL into a managed no-code transform | Airflow, Cloud Data Fusion, BigQuery |
+| 003 | [Browser Upload → GCS → BigQuery](003-loading-data-from-www-page-to-bq) | Manual upload for non-technical users, event-triggered load | Flask, Cloud Functions, BigQuery |
+| 004 | [Retail Analytics: Airflow + dbt + Soda](004-airflow-dbt-retail-project) | Full orchestration + transformation + data-quality gate | Airflow (Cosmos), dbt, Soda, BigQuery |
+| 005 | [X (Twitter) Data Pipeline](005-x-data-pipeline-using-airflow) | Scheduled API extract via self-hosted Airflow | tweepy, Airflow, Docker Compose |
+| 006 | [Spotify Listening History](006-spotify-data-pipeline) | Incremental ELT, built up in four iterations | Spotify API, pandas, SQLite |
+| 007 | [File-Based CDC via BigQuery External Tables](007-bigquery-transfer-service-optimise-file-based-cdc) | Query GCS files immediately, before a scheduled load | PyArrow, BigQuery external tables |
 
 Project 004 is the most complete: an Airflow DAG builds a retail star schema with dbt and gates every stage — load, transform, report — on Soda data-quality checks, so a broken model fails the pipeline instead of reaching a dashboard quietly.
 
@@ -25,7 +25,7 @@ Project 004 is the most complete: an Airflow DAG builds a retail star schema wit
 Each folder has its own `README.md` and `requirements.txt`. General pattern:
 
 ```bash
-cd 004_airflow_dbt_retail_project
+cd 004-airflow-dbt-retail-project
 pip install -r requirements.txt
 # see the project's own README for the specific run command and required env vars
 ```
