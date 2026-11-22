@@ -179,3 +179,5 @@ airflow.db
 airflow-webserver.pid
 airflow_settings.yaml
 webserver_config.py
+# Datasets over 10 MB are not committed (download steps in the project README)
+004-airflow-dbt-retail-project/include/dataset/online_retail.csv

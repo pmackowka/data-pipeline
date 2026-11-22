@@ -42,6 +42,8 @@ Each Soda check is a real DAG dependency (`chain(...)` in `dags/retail.py`) — 
 
 Requires the [Astro CLI](https://www.astronomer.io/docs/astro/cli/overview).
 
+The dataset (~43 MB) is not committed. Download [Online Retail](https://archive.ics.uci.edu/dataset/352/online+retail) from UCI, export it to CSV and save it as `include/dataset/online_retail.csv`.
+
 ```bash
 astro dev start
 ```
