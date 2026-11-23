@@ -51,6 +51,16 @@ Write the ground truth (which rows are the same person/company) to a separate se
 - `mart_account_health` has exactly one row per true company, no fan-out.
 - Matching precision and recall versus `truth_identity` are printed in this README, with the false matches explained.
 
+## Extension — internal delivery data (Jira, GitHub)
+
+Optional, after the main brief is done. Goal: link a shipped change to customer impact: issue → PR → commit sha → `app_version` on events → affected accounts.
+
+- Seeds from [`fivetran/dbt_jira`](https://github.com/fivetran/dbt_jira) and [`fivetran/dbt_github`](https://github.com/fivetran/dbt_github) (`integration_tests/seeds/`), version pinned.
+- Step 0: add synthetic PRs and commits where ~80% carry a Jira key in branch/title/message and 20% have none or a wrong key. Add `app_version` (= commit sha) to the Amplitude events.
+- Staging: extract the key with regex `[A-Z][A-Z0-9]+-\d+`; verify the real PK columns in the seeds before modelling.
+- `int_change_map`: sha → PR → issue key. `mart_change_impact`: per issue, accounts exposed after the first event with that sha and support conversations in the next 7 days (aggregate to account grain before joining).
+- Tests: unique issue key, PR-to-key coverage reported in this README, no event with an unknown sha.
+
 ## Starting prompt for an agent
 
 > Read `008-fivetran-identity-resolution-dbt/README.md` in the data-pipeline repo. Start with Step 0: copy the listed seed files from the pinned Fivetran package versions, then write the generator for drifted rows and `truth_identity.csv`. Stop after Step 0 and show me sample rows of each source for the same three companies before writing any dbt model.
